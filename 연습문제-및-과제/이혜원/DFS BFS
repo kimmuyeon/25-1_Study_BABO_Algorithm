@@ -1,0 +1,21 @@
+#주식 가격
+def solution(prices):
+    n = len(prices)
+    answer = [0]*n    #결과 저장 리스트
+    stack = []        #계산을 위해 사용할 스택
+
+    for i in range(n):
+        # 현재 가격이 스택의 마지막 가격보다 낮으면 그때 스택에서 인덱스 빼냄
+        while stack and prices[i] < prices[stack[-1]]:
+            j = stack.pop()
+            answer[j] = i-j   #i-j = 가격이 떨어지기 전까지의 시간
+        stack.append(i)   #스택   에 인덱스 추가
+
+        #스택에 남아있는 나머지 인덱스들 중 끝까지 가격이 떨어지지 않은 경우
+    while stack:
+        j = stack.pop()
+        answer[j] = n-j-1
+    return answer
+
+
+
