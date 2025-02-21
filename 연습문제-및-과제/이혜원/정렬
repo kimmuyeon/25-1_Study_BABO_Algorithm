@@ -1,0 +1,36 @@
+#2751
+def sel_sort(arr):
+    n = len(arr)
+    for i in range(n):    
+        min_idx = i   
+        for j in range(i+1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j    #j번째 인덱스가 min_idx번째 인덱스보다 작다면 min_idx를 j로 둬서 최솟값 갱신
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]     #min_idx의 인덱스인 최솟값 인덱스를 i번째와 교환
+    return arr
+
+import sys
+n = int(sys.stdin.readline().strip())
+arr = [int(sys.stdin.readline().strip()) for _ in range(n)]
+    
+arr.sort()
+print("\n".join(map(str, arr)))
+
+
+#1427
+def sel_sort(arr):
+    n = len(arr)
+    for i in range(n):    
+        max_idx = i   
+        for j in range(i+1, n):
+            if arr[j] > arr[max_idx]:
+                min_idx = j    
+        arr[i], arr[max_idx] = arr[max_idx], arr[i]   
+    return arr
+
+import sys
+n = sys.stdin.readline().strip()
+arr = sorted(n, reverse=True)   #각 자리수를 정수 리스트로 변환 후 내림차순 정렬
+print("".join(arr))  #출력은 문자열 형태로
+
+
